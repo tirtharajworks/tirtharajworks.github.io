@@ -41,7 +41,7 @@
       flex-direction: column;
       width: 100%;
       max-width: 1200px;
-      padding: 80px 64px;
+      padding: 120px 64px 80px;
       gap: 48px;
     }
 
@@ -187,7 +187,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .page-wrapper {
-        padding: 48px 28px;
+        padding: 100px 28px 48px;
         gap: 36px;
       }
       .hero-row {
@@ -227,9 +227,6 @@
 
     /* ── THEME TOGGLE BUTTON ── */
     #theme-toggle {
-      position: fixed;
-      top: 24px;
-      right: 28px;
       background: none;
       border: 1px solid #cccccc;
       border-radius: 50%;
@@ -298,9 +295,6 @@
     }
 
     #rain-toggle {
-      position: fixed;
-      top: 24px;
-      right: 76px;
       background: none;
       border: 1px solid #2027F0;
       border-radius: 50%;
@@ -394,16 +388,12 @@
     }
 
     #brand {
-      position: fixed;
-      top: 28px;
-      left: 28px;
       font-family: "Aptos", "DM Sans", "Segoe UI", Arial, sans-serif;
       font-size: 1.75rem;
       font-weight: 700;
       font-style: normal;
       color: #1a1a1a;
       letter-spacing: 0.01em;
-      z-index: 999;
       transition: color 0.5s ease;
     }
 
@@ -418,12 +408,49 @@
     body.dark.rainy #brand {
       color: #9CEFFF;
     }
+
+    /* ── FIXED RIBBON ── */
+    #ribbon {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: background 0.5s ease;
+    }
+
+    #ribbon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    body.dark #ribbon {
+      background: rgba(0, 0, 0, 0.75);
+    }
+
+    body.rainy #ribbon {
+      background: rgba(127, 127, 127, 0.75);
+    }
+
+    body.dark.rainy #ribbon {
+      background: rgba(10, 10, 26, 0.75);
+    }
   </style>
 </head>
 <body>
-  <div id="brand">tirtharajworks</div>
-
-  <button id="rain-toggle" title="Toggle rainy mode" aria-label="Toggle rainy mode">
+  <header id="ribbon">
+    <div id="brand">tirtharajworks</div>
+    <div id="ribbon-buttons">
+      <button id="rain-toggle" title="Toggle rainy mode" aria-label="Toggle rainy mode">
     <!-- Cloud-rain icon (default: clear mode) -->
     <svg id="icon-rain" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <line x1="8" y1="19" x2="8" y2="21"/><line x1="8" y1="13" x2="8" y2="15"/>
@@ -453,6 +480,8 @@
       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
     </svg>
   </button>
+    </div>
+  </header>
 
   <div class="page-wrapper">
 
